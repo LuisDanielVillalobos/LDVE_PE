@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 int valinum(int ri = 0, int rf = 64000, char msge[] = "Numero entero: ");
+long valilong(long ri, long rf, char msge[] = "Numero: ");
 void printstr(char palabra[]);
 void copystr(char copia[], char palabra[]);
 void upcstr(char palabra[]);
@@ -12,26 +13,43 @@ void invstr(char palabra[]);
 void nospace(char palabra[]);
 void valichar(char palabra[]);
 
-
-//funcines--------------------------
-//valor incial , valor final, mensaje
+// funcines--------------------------
+// valor incial , valor final, mensaje
 int valinum(int ri, int rf, char msge[])
 {
-    char xnum[30];
-    int num;
-    do
+  char xnum[30];
+  int num;
+  do
+  {
+    printf("%s", msge);
+    fflush(stdin);
+    gets(xnum);
+    num = atoi(xnum);
+    if (num < ri or num > rf)
     {
-        printf("%s", msge);
-        fflush(stdin);
-        gets(xnum);
-        num = atoi(xnum);
-        if (num < ri or num > rf)
-        {
-            printf("Error\nvalor debe ser entre (%d-%d)\n", ri, rf);
-            system("PAUSE");
-        }
-    } while (num < ri or num > rf);
-    return num;
+      printf("Error\nvalor debe ser entre (%d-%d)\n", ri, rf);
+      system("PAUSE");
+    }
+  } while (num < ri or num > rf);
+  return num;
+}
+long valilong(long ri, long rf, char msge[])
+{
+  char xnum[30];
+  long num;
+  do
+  {
+    printf("%s", msge);
+    fflush(stdin);
+    gets(xnum);
+    num = atol(xnum);
+    if (num < ri or num > rf)
+    {
+      printf("Error\nvalor debe ser entre (%ld-%ld)\n", ri, rf);
+      system("PAUSE");
+    }
+  } while (num < ri or num > rf);
+  return num;
 }
 // imprimir cadena
 void printstr(char palabra[])
