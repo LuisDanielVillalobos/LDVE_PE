@@ -3,6 +3,7 @@
 #include <time.h>
 int valinum(int ri = 0, int rf = 64000, char msge[] = "Numero entero: ");
 long valilong(long ri, long rf, char msge[] = "Numero: ");
+void strscan(char palabra[],char mensaje[]="Ingrese la palabra");
 void printstr(char palabra[]);
 void copystr(char copia[], char palabra[]);
 void upcstr(char palabra[]);
@@ -11,7 +12,7 @@ void capstr(char palabra[]);
 int tamstr(char palabra[]);
 void invstr(char palabra[]);
 void nospace(char palabra[]);
-void valichar(char palabra[]);
+void valichar(char palabra[], char msge[] = "Cadena no valida, intente otra: ");
 
 // funcines--------------------------
 // valor incial , valor final, mensaje
@@ -32,6 +33,12 @@ int valinum(int ri, int rf, char msge[])
     }
   } while (num < ri or num > rf);
   return num;
+}
+void strscan(char palabra[],char mensaje[])
+{
+  printf("%s", mensaje);
+  fflush(stdin);
+  gets(palabra);
 }
 long valilong(long ri, long rf, char msge[])
 {
@@ -174,7 +181,7 @@ void nospace(char palabra[])
   }
 }
 // No espacios inicio ni final, ni doble, Aa-Zz
-void valichar(char palabra[])
+void valichar(char palabra[], char msge[])
 {
   int i;
   bool band;
@@ -235,7 +242,7 @@ void valichar(char palabra[])
     if (band)
     {
 
-      printf("Cadena no valida, intente otra: ");
+      printf("%s", msge);
       fflush(stdin);
       gets(palabra);
     }
